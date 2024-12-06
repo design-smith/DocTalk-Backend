@@ -5,6 +5,14 @@ from google.cloud import translate_v2 as translate
 import json
 import os
 
+credentials_json = os.getenv('GOOGLE_CREDENTIALS')
+if credentials_json:
+    # Write credentials to a temporary file
+    with open('/tmp/google-credentials.json', 'w') as f:
+        f.write(credentials_json)
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = '/tmp/google-credentials.json'
+
+app = FastAPI()
 app = FastAPI()
 
 # Configure CORS
