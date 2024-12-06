@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: doctalk-api
+    runtime: python3.9
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        sync: false # Add this manually in Render dashboard
